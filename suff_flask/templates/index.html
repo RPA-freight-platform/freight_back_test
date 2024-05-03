@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>해상 물류 운임비 검색 서비스</h1>
+        <form action="\" mothod="get">
+            <label for="keyword1">첫번째 키워드</label>
+            <input type="test" name="keyword1">
+            <label for="keyword2">두번째 키워드</label>
+            <input type="test" name="keyword2">
+            <button type="submit">검색!</button>
+        </form>
+        {% if data %}
+            {{data}}
+        {% endif %}
+        <script src="" async defer></script>
+    </body>
+</html>
