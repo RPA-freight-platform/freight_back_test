@@ -15,11 +15,18 @@
     <body>
         <h1>해상 물류 운임비 검색 서비스</h1>
         <form action="\" mothod="get">
-            <label for="keyword1">첫번째 키워드</label>
-            <input type="test" name="keyword1">
-            <label for="keyword2">두번째 키워드</label>
-            <input type="test" name="keyword2">
-            <button type="submit">검색!</button>
+            <label for="keyword1">선착지</label>
+            <input type="text" name="keyword1">
+            <label for="keyword2">양하지</label>
+            <input type="text" name="keyword2">
+            <label for="keyword3">출항일</label>
+            <input type="text" name="keyword3">
+            <label for="keyword4">화물</label>
+            <input type="text" name="keyword4">
+            <label for="keyword5">적용운임</label>
+            <input type="text" name="keyword5">
+            <button type="submit">운임 적정여부 판단하기</button>
+
         </form>
         {% if data %}
             {{data}}
