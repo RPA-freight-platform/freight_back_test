@@ -15,6 +15,7 @@ def create_app():
     # ORM
     db.init_app(app)
     migrate.init_app(app, db)
+    from . import models
 
     # 블루프린트
     from .views import main_views
