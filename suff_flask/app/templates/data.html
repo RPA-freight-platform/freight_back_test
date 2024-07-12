@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>해상 물류 운임비 검색 서비스</h1>
+        <h2>조회 조건</h2>
+        <form action="/crawl" mothod="get">
+            <label for="keyword1">선착국가</label>
+            <input type="text" name="keyword1">
+            <label for="keyword2">선착항구</label>
+            <input type="text" name="keyword2">
+            <label for="keyword3">양하국가</label>
+            <input type="text" name="keyword3">
+            <label for="keyword4">양하항구</label>
+            <input type="text" name="keyword4">
+            
+            <button type="submit">운임 적정여부 판단하기</button>
+        </form>
+        <h2>운임 조회 결과</h2>
+        {% if data %}
+        {% for item in data %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        {% endif %}
+        <script src="" async defer></script>
+    </body>
+</html>

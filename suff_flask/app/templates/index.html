@@ -14,24 +14,9 @@
     </head>
     <body>
         <h1>해상 물류 운임비 검색 서비스</h1>
-        <h2>조회 조건</h2>
-        <form action="\" mothod="get">
-            <label for="keyword1">선착지</label>
-            <input type="text" name="keyword1">
-            <label for="keyword2">양하지</label>
-            <input type="text" name="keyword2">
-            <label for="keyword3">출항일</label>
-            <input type="text" name="keyword3">
-            <label for="keyword4">화물</label>
-            <input type="text" name="keyword4">
-            <label for="keyword5">적용운임</label>
-            <input type="text" name="keyword5">
-            <button type="submit">운임 적정여부 판단하기</button>
-        </form>
-        <h2>운임 조회 결과</h2>
-        {% if data %}
-            {{data}}
-        {% endif %}
+        <div>
+            <button onclick="window.location.href='/crawl'">Crawl Data</button>
+        </div>
         <script src="" async defer></script>
     </body>
 </html>
