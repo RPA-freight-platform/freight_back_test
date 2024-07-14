@@ -27,7 +27,6 @@ def search(start_country, start_port, finish_country, finish_port):
     id_box.send_keys('4840sss@kookmin.ac.kr')
     driver.implicitly_wait(10)
     password_box = driver.find_element(By.XPATH, '//*[@id="authUILogIn_password"]')
-
     driver.implicitly_wait(10)
     password_box.send_keys('Bok18864jae!')
     driver.implicitly_wait(10)
@@ -137,7 +136,7 @@ def search(start_country, start_port, finish_country, finish_port):
     result_button = driver.find_element(By.XPATH, '/html/body/div[12]/div/div/div/div[2]/div[3]/div/button[2]')
     driver.implicitly_wait(10)
     result_button.click()
-    time.sleep(5)
+    time.sleep(10)
 
     ## best offer 선택
     offer_button = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div')
@@ -146,8 +145,6 @@ def search(start_country, start_port, finish_country, finish_port):
 
     fee20 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[3]/div[6]/span/span[2]')
     fee40 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[4]/div[6]/span/span[2]')
-    print("OCEAN 20' :", fee20.text)
-    print("OCEAN 40' :", fee40.text)
 
     ## json 파일로 저장
     data =  {
@@ -207,17 +204,18 @@ def search(start_country, start_port, finish_country, finish_port):
     podCode = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[1]/div[1]/div/div[1]/div[3]/span[2]')
     fee20 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[3]/div[6]/span/span[2]')
     fee40 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[4]/div[6]/span/span[2]')
+    fee2 = fee20.text.replace(',', '')
+    fee4 = fee40.text.replace(',', '')
 
     data["validToDate"] = validToDate
     data["polCode"] = polCode.text
     data["podCode"] = podCode.text
     data["freightInfo"][0]["polCode"] = polCode.text
     data["freightInfo"][0]["podCode"] = podCode.text
-    data["freightInfo"][0]["billList"][0]["billRate"] = fee20.text
-    data["freightInfo"][0]["billList"][1]["billRate"] = fee40.text
-    print(data)
+    data["freightInfo"][0]["billList"][0]["billRate"] = fee2
+    data["freightInfo"][0]["billList"][1]["billRate"] = fee4
     driver.quit()
-
+    print("crawl success")
     return data
     # json 파일로 저장
     #import json

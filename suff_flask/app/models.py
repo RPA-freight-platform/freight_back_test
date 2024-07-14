@@ -1,14 +1,25 @@
 from app import db
 
-class Question(db.Model):
+class FreightInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    subject = db.Column(db.String(200), nullable=False)
-    content = db.Column(db.Text(), nullable=False)
-    create_date = db.Column(db.DateTime(), nullable=False)
 
-class Answer(db.Model):
+    data_source = db.Column(db.String(20), nullable=False)
+    plat_date = db.Column(db.String(20), nullable=False)
+    valid_date = db.Column(db.String(20), nullable=False)
+    
+    pol_code = db.Column(db.String(10), nullable=False)
+    pod_code = db.Column(db.String(10), nullable=False)
+    lead_time = db.Column(db.Integer, nullable=False)
+    bills = db.relationship('Bill', backref='freight_info', lazy=True)
+
+class Bill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'))
-    question = db.relationship('Question', backref=db.backref('answer_set'))
-    content = db.Column(db.Text(), nullable=False)
-    create_date = db.Column(db.DateTime(), nullable=False)
+    tariff_group_code = db.Column(db.String(10), nullable=False)
+    bill_name = db.Column(db.String(50), nullable=False)
+    bill_div_code = db.Column(db.String(10), nullable=False)
+    bill_unit = db.Column(db.String(10), nullable=False)
+    cntr_size = db.Column(db.String(10), nullable=False)
+    cntr_type = db.Column(db.String(10), nullable=False)
+    currency_code = db.Column(db.String(10), nullable=False)
+    bill_rate = db.Column(db.Float, nullable=False)
+    freight_info_id = db.Column(db.Integer, db.ForeignKey('freight_info.id'), nullable=False)

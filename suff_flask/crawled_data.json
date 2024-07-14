@@ -4,7 +4,7 @@
     "ETRACE": "",
     "requestNo": "",
     "dataSource": "FREIGHTOS",
-    "platDate": "20240712",
+    "platDate": "20240714",
     "validToDate": "20240731",
     "polCode": "KRPUS",
     "podCode": "USLGB",
@@ -22,7 +22,7 @@
                     "cntrSize": "20",
                     "cntrType": "HC",
                     "currencyCode": "USD",
-                    "billRate": "6,381.00"
+                    "billRate": "6381.00"
                 },
                 {
                     "tariffGroupCode": "FRIT",
@@ -32,7 +32,7 @@
                     "cntrSize": "40",
                     "cntrType": "HC",
                     "currencyCode": "USD",
-                    "billRate": "7,921.00"
+                    "billRate": "7921.00"
                 }
             ]
         }
