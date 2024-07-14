@@ -26,9 +26,11 @@ def search(start_country, start_port, finish_country, finish_port):
     driver.implicitly_wait(10)
     id_box.send_keys('4840sss@kookmin.ac.kr')
     driver.implicitly_wait(10)
+    time.sleep(2)
     password_box = driver.find_element(By.XPATH, '//*[@id="authUILogIn_password"]')
     driver.implicitly_wait(10)
     password_box.send_keys('Bok18864jae!')
+    time.sleep(2)
     driver.implicitly_wait(10)
     driver.find_element(By.XPATH, '/html/body/div[12]/div/div[2]/div/div[2]/div/div/div[1]/div/form/button').click()
     time.sleep(3)
@@ -204,6 +206,7 @@ def search(start_country, start_port, finish_country, finish_port):
     podCode = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[1]/div[1]/div/div[1]/div[3]/span[2]')
     fee20 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[3]/div[6]/span/span[2]')
     fee40 = driver.find_element(By.XPATH, '//*[@id="results-view"]/section/section/main/div[1]/div/div[2]/div/div[1]/div[4]/div[6]/span/span[2]')
+
     fee2 = fee20.text.replace(',', '')
     fee4 = fee40.text.replace(',', '')
 

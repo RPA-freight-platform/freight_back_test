@@ -39,13 +39,13 @@ def crawl():
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
             
-            return jsonify({'message': 'Data successfully crawled and saved', 'file_path': file_path})
+            return render_template('store.html', data=data)
             
             # feedback data
             # return render_template('data.html', data=data)
 
-# 엔드포인트: 저장된 JSON 파일 데이터를 웹 페이지에 보여주기
-@bp.route('/show_data', methods=['GET'])
+# 엔드포인트: 저장된 JSON 파일 데이터을 데이터베이스에 저장
+@bp.route('/store_data', methods=['GET'])
 def show_data():
     file_path = 'crawled_data.json'
     if not os.path.exists(file_path):
