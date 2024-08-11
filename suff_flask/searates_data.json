@@ -3,16 +3,16 @@
     "ERRORMSG": "",
     "ETRACE": "",
     "requestNo": "",
-    "dataSource": "FREIGHTOS",
+    "dataSource": "SEARATES",
     "platDate": "20240812",
-    "validToDate": "20240814",
+    "validToDate": "2024-08-25",
     "polCode": "KRPUS",
-    "podCode": "USLGB",
+    "podCode": "ESVLC",
     "freightInfo": [
         {
             "polCode": "KRPUS",
-            "podCode": "USLGB",
-            "leadtime": "17",
+            "podCode": "ESVLC",
+            "leadtime": 27,
             "billList": [
                 {
                     "tariffGroupCode": "FRIT",
@@ -20,19 +20,19 @@
                     "billDivCode": "BOX",
                     "billUnit": "20DR",
                     "cntrSize": "20",
-                    "cntrType": "HC",
+                    "cntrType": "DR",
                     "currencyCode": "USD",
-                    "billRate": "4330.00"
+                    "billRate": 5085
                 },
                 {
                     "tariffGroupCode": "FRIT",
                     "billName": "Basic Ocean Freight",
                     "billDivCode": "BOX",
                     "billUnit": "40DR",
-                    "cntrSize": "20",
-                    "cntrType": "HC",
+                    "cntrSize": "40",
+                    "cntrType": "DR",
                     "currencyCode": "USD",
-                    "billRate": "6090.00"
+                    "billRate": 5085
                 }
             ]
         }

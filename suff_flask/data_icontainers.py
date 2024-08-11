@@ -31,11 +31,11 @@ def login_and_initial_search(driver):
 
 def select_container_and_search(start_port, end_port, option_index):
     try:
-        chrome_options = Options()
-        chrome_options.add_experimental_option("detach", True)
+        # chrome_options = Options()
+        # chrome_options.add_experimental_option("detach", True)
 
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-                
+        #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        driver = webdriver.Chrome()
         login_and_initial_search(driver)
         
         WebDriverWait(driver, 5).until(EC.url_contains('https://my.icontainers.com/'))
@@ -126,7 +126,8 @@ def select_container_and_search(start_port, end_port, option_index):
                             "leadtime": original_data.get("data", {}).get("maritimeSchedule", {}).get("transitDays", 0),
                             "billList": [
                                 {   
-                                    "tariffGroupCode": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("tariffGroupCode", ""),
+                                    #"tariffGroupCode": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("tariffGroupCode", ""),
+                                    "tariffGroupCode": "FRIT",
                                     "billName": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("name", ""),
                                     "billDivCode": "BOX",
                                     "billUnit": "20DR",
