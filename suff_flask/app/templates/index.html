@@ -11,12 +11,74 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+
+        <script>
+            function search1() {
+                const input = document.getElementById('autocomplete-input1').value;
+                fetch(`/autocomplete?q=${encodeURIComponent(input)}`)
+                    .then(response => response.json())
+                    .then(results => {
+                        const select = document.getElementById('results1');
+                        select.innerHTML = '';
+                        results.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item;
+                            option.innerText = item;
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+
+                document.getElementById('results1').addEventListener('change', function() {
+                    const selectedOption = this.value;
+                    document.getElementById('autocomplete-input1').value = selectedOption;
+                });
+            }
+
+            function search2() {
+                const input = document.getElementById('autocomplete-input2').value;
+                fetch(`/autocomplete?q=${encodeURIComponent(input)}`)
+                    .then(response => response.json())
+                    .then(results => {
+                        const select = document.getElementById('results2');
+                        select.innerHTML = '';
+                        results.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item;
+                            option.innerText = item;
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+
+                document.getElementById('results2').addEventListener('change', function() {
+                    const selectedOption = this.value;
+                    document.getElementById('autocomplete-input2').value = selectedOption;
+                });
+            }
+            
+            
+        </script>
     </head>
     <body>
         <h1>해상 물류 운임비 검색 서비스</h1>
-        <div>
-            <button onclick="window.location.href='/crawl'">Crawl Data</button>
-        </div>
+        <h2>조회 조건</h2>
+        <form action="/search_data" mothod="get">
+            <label for="search1">선착항구(항구코드)</label>
+            <input type="text" id="autocomplete-input1" oninput="search1()" placeholder="Start typing..." name = "autocomplete-input1">
+            <select id="results1" size="10"></select>
+
+
+            <label for="search2">양하항구(항구코드)</label>
+            <input type="text" id="autocomplete-input2" oninput="search2()" placeholder="Start typing..." name = "autocomplete-input2">
+            <select id="results2" size="10"></select>
+            
+            <label for="search3">날짜(8글자_공백제외)</label>
+            <input type="text" name="search3">
+
+            <button type="submit">운임비 조회하기</button>
+        </form>
+        
         <script src="" async defer></script>
     </body>
 </html>

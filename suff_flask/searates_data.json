@@ -4,14 +4,14 @@
     "ETRACE": "",
     "requestNo": "",
     "dataSource": "SEARATES",
-    "platDate": "20240812",
-    "validToDate": "2024-08-25",
+    "platDate": "20240817",
+    "validToDate": "20240831",
     "polCode": "KRPUS",
-    "podCode": "ESVLC",
+    "podCode": "USLGB",
     "freightInfo": [
         {
             "polCode": "KRPUS",
-            "podCode": "ESVLC",
+            "podCode": "USLGB",
             "leadtime": 27,
             "billList": [
                 {
@@ -22,7 +22,7 @@
                     "cntrSize": "20",
                     "cntrType": "DR",
                     "currencyCode": "USD",
-                    "billRate": 5085
+                    "billRate": 5065
                 },
                 {
                     "tariffGroupCode": "FRIT",
@@ -32,7 +32,7 @@
                     "cntrSize": "40",
                     "cntrType": "DR",
                     "currencyCode": "USD",
-                    "billRate": 5085
+                    "billRate": 5065
                 }
             ]
         }

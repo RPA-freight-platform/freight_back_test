@@ -190,7 +190,7 @@ def home_search(port_from,search_port_from_code, port_to, search_port_to_code):
         "requestNo": "",
         "dataSource": "SEARATES",
         "platDate": datetime.today().strftime("%Y%m%d"),
-        "validToDate": freight_20[min_company]['valid'],
+        "validToDate": (freight_20[min_company]['valid']).replace("-", ""),
         "polCode": search_port_from_code,
         "podCode": search_port_to_code,
         "freightInfo": [
