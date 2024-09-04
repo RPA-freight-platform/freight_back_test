@@ -116,8 +116,8 @@ def home_search(port_from,search_port_from_code, port_to, search_port_to_code):
     form_div1 = driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/section[1]/div/div[2]')
     form_div2 = driver.execute_script('return arguments[0].shadowRoot',form_div1)
 
-    input_port(port_from, 'from', form_div2)
-    input_port(port_to, 'to', form_div2)
+    input_port(search_port_from_code, 'from', form_div2)
+    input_port(search_port_to_code, 'to', form_div2)
 
     date_input = form_div2.find_element(By.CLASS_NAME, 'Fxh_p7ksiflCkUswgS3zb')
     date_input.click()

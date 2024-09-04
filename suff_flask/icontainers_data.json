@@ -2,8 +2,8 @@
     "RESPONSE": "SUCCESS",
     "ERRORMSG": "",
     "ETRACE": "",
-    "requestNo": "",
-    "dataSource": "SEARATES",
+    "requestNo": "69975833-64f0-4713-8816-3f15b81c0f7d",
+    "dataSource": "iContainers",
     "platDate": "20240904",
     "validToDate": "20240918",
     "polCode": "CNTXG",
@@ -12,27 +12,27 @@
         {
             "polCode": "CNTXG",
             "podCode": "USLAX",
-            "leadtime": 27,
+            "leadtime": "",
             "billList": [
                 {
                     "tariffGroupCode": "FRIT",
-                    "billName": "Basic Ocean Freight",
+                    "billName": "Shipco Transport_US",
                     "billDivCode": "BOX",
                     "billUnit": "20DR",
                     "cntrSize": "20",
-                    "cntrType": "DR",
+                    "cntrType": "HC",
                     "currencyCode": "USD",
-                    "billRate": 2040
+                    "billRate": 5431
                 },
                 {
-                    "tariffGroupCode": "FRIT",
-                    "billName": "Basic Ocean Freight",
+                    "tariffGroupCode": "",
+                    "billName": "Shipco Transport_US",
                     "billDivCode": "BOX",
                     "billUnit": "40DR",
-                    "cntrSize": "40",
-                    "cntrType": "DR",
+                    "cntrSize": "20",
+                    "cntrType": "HC",
                     "currencyCode": "USD",
-                    "billRate": 2040
+                    "billRate": 6323
                 }
             ]
         }

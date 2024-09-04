@@ -18,10 +18,10 @@ import json
 
 def login_and_initial_search(driver):
     driver.get('https://www.icontainers.com/')
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.LINK_TEXT, 'Login/Register')))
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.LINK_TEXT, 'Login/Register')))
     login_link = driver.find_element(By.LINK_TEXT, 'Login/Register')
     login_link.click()
-    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, 'email')))
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, 'email')))
     email_field = driver.find_element(By.NAME, 'email')
     email_field.send_keys('jiyeyu1220@gmail.com')
     password_field = driver.find_element(By.NAME, 'password')
@@ -38,8 +38,9 @@ def select_container_and_search(start_port, end_port, option_index):
         driver = webdriver.Chrome()
         login_and_initial_search(driver)
         
-        WebDriverWait(driver, 5).until(EC.url_contains('https://my.icontainers.com/'))
-        origin_input = WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, 20).until(EC.url_contains('https://my.icontainers.com/'))
+
+        origin_input = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.NAME, 'originLocation'))
         )
         # 출발지 입력
@@ -62,13 +63,13 @@ def select_container_and_search(start_port, end_port, option_index):
         #    EC.presence_of_element_located((By.XPATH, '/html/body/div/div[3]/div[2]/main/div/div[1]/div/div/div[2]/form/div[5]/div[1]/div/div/input'))
         #)
         #container_dropdown.click()
-        container_dropdown = WebDriverWait(driver, 5).until(
+        container_dropdown = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'div.css-1g6gooi'))
         )
         container_dropdown.click()
 
         # 옵션 선택 - 드롭다운 방식 사이트 (첫 번째 옵션: 0 - 20, 두 번째 옵션: 1 - 40)
-        container_option = WebDriverWait(driver, 5).until(
+        container_option = WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.ID, f'react-select-3-option-{option_index}'))
         )
         container_option.click()
@@ -84,10 +85,11 @@ def select_container_and_search(start_port, end_port, option_index):
 
         search_rates_button = driver.find_element(By.XPATH, '//span[text()="Search Rates"]')
         search_rates_button.click()
-        WebDriverWait(driver, 7).until(EC.url_contains('https://my.icontainers.com/quotes'))
+        time.sleep(5)
+        # WebDriverWait(driver, 20).until(EC.url_contains('https://my.icontainers.com/quotes'))
 
-        show_details_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, '//span[@data-testid="ShowRateDetailsButton"]'))
+        show_details_button = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="ShowRateDetailsButton"]'))
         )
         show_details_button.click()
 
@@ -99,7 +101,7 @@ def select_container_and_search(start_port, end_port, option_index):
             return None
 
         time.sleep(7)
-
+        print('---')
         # 동적 url로 요청하기
         dynamic_url = get_dynamic_url()
         if dynamic_url:
@@ -116,14 +118,15 @@ def select_container_and_search(start_port, end_port, option_index):
                     "requestNo": original_data.get("data", {}).get("uuid", ""),
                     "dataSource": "iContainers",
                     "platDate": plateDate,
-                    "validToDate": original_data.get("data", {}).get("expirationDate", ""),
+                    "validToDate": original_data.get("data", {}).get("expirationDate", "").replace("-", ""),
                     "polCode": original_data.get("data", {}).get("maritimeSchedule", {}).get("originPort", {}).get("isoCode", ""),
                     "podCode": original_data.get("data", {}).get("maritimeSchedule", {}).get("destinationPort", {}).get("isoCode", ""),
                     "freightInfo": [
                         {
                             "polCode": original_data.get("data", {}).get("maritimeSchedule", {}).get("originPort", {}).get("isoCode", ""),
                             "podCode": original_data.get("data", {}).get("maritimeSchedule", {}).get("destinationPort", {}).get("isoCode", ""),
-                            "leadtime": original_data.get("data", {}).get("maritimeSchedule", {}).get("transitDays", 0),
+                            "leadtime": "",
+                            # original_data.get("data", {}).get("maritimeSchedule", {}).get("transitDays", 0)
                             "billList": [
                                 {   
                                     #"tariffGroupCode": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("tariffGroupCode", ""),
@@ -148,7 +151,7 @@ def select_container_and_search(start_port, end_port, option_index):
             
             else:
                 return  {       
-                            "traiffGroupCode": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("tariffGroupCode", ""),
+                            "tariffGroupCode": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("tariffGroupCode", ""),
                             "billName": original_data.get("data", {}).get("suppliersInformation", {}).get("freight", {}).get("name", ""),
                             "billDivCode": "BOX",
                             "billUnit": "40DR",
